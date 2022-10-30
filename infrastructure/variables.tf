@@ -13,3 +13,4 @@ variable "account_number" {
 variable "region" {
   default = "us-east-2"
 }
+
