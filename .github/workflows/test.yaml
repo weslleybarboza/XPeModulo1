@@ -1,12 +1,12 @@
-name: Deploy
+name: test on pull-request
 
 on:
-  push:
+  pull_request:
     branch: [master]
 
 jobs:
-  deploy:
-    name: Deploy to DataLake
+  test:
+    name: Test infra on PR
     runs-on: ubuntu-latest
     
     steps:
@@ -38,5 +38,4 @@ jobs:
         $COMMAND_IAC init
         $COMMAND_IAC validate
         $COMMAND_IAC plan
-        $COMMAND_IAC apply -auto-aprove
     #auto-aprove é para informar o yes no terminal
