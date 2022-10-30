@@ -7,6 +7,6 @@ terraform{
   backend "s3" {
     bucket = "datalake-weslley-production-156814630337-terraform-state"
     key = "state/terraform.tfstate"
-    region = var.region
+    region = "us-east-2"
   }
 }
