@@ -3,24 +3,24 @@
 #essa funcao tera a permissao de assumir uma role do servico lambda da AWS
 resource "aws_iam_role" "lambda" {
   name               = "WESLLEYLambdaRole"
-  assume_role_policy = <<EOT
+  assume_role_policy = <<EOF
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": "sts:AssumeRole"
-            "Principal":{
-                "Service":"lambda.amazonaws.com"
-            },
-            "Effect": "Allow",
-            "Sid":"AssumeRole"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": "AssumeRole"
+    }
+  ]
 }
-EOT
+EOF
 
   tags = {
-    cliente = "weslley"
+    cliente   = "weslley"
   }
 
 }
@@ -29,7 +29,7 @@ resource "aws_iam_policy" "lambda" {
   name        = "WESLLEYAWSLambdaBasicExecutionRolePolicy"
   path        = "/"
   description = "Provides write permissions to CloudWatch Logs, S3 buckets and EMR Steps"
-  policy      = <<EOT
+  policy = <<EOF
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -38,7 +38,7 @@ resource "aws_iam_policy" "lambda" {
             "Action": [
                 "logs:CreateLogGroup",
                 "logs:CreateLogStream",
-                "logs:PutLogEvents
+                "logs:PutLogEvents"
             ],
             "Resource": "*"
         },
@@ -57,15 +57,16 @@ resource "aws_iam_policy" "lambda" {
             "Resource": "*"
         },
         {
-            "Effect": "Allow",
-            "Action": "iam:PassRole",
-            "Resource": ["arn:aws:iam:127012818163/EMR_DefaultRole",
-                         "arn:aws:iam:127012818163/EMR_EC2_DefaultRole"]
-        }        
+          "Action": "iam:PassRole",
+          "Resource": ["arn:aws:iam::127012818163:role/EMR_DefaultRole",
+                       "arn:aws:iam::127012818163:role/EMR_EC2_DefaultRole"],
+          "Effect": "Allow"
+        }
     ]
 }
-EOT
+EOF
 }
+
 
 #vinculando uma policy a uma role
 resource "aws_iam_role_policy_attachment" "lambda_attach" {

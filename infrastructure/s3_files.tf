@@ -21,6 +21,6 @@ resource "aws_s3_bucket_object" "delta_upsert" {
   key    = "emr-code/pyspark/02_delta_spark_upsert.py"
   acl    = "private"
   source = "../etl/02_delta_spark_upsert.py" #voltando uma pasta e selecionando arquivo
-  etag   = filemd5("../etl/02_delta_spark_upsert.py")
+  etag   = filemd5("../etl/02_delta_spark_upset.py")
 
 }
