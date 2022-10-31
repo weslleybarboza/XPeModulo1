@@ -18,9 +18,9 @@ resource "aws_s3_bucket_object" "delta_insert" {
 
 resource "aws_s3_bucket_object" "delta_upsert" {
   bucket = aws_s3_bucket.datalake.id
-  key    = "emr-code/pyspark/02_delta_spark_upsert.py"
+  key    = "emr-code/pyspark/02_delta_spark_upset.py"
   acl    = "private"
-  source = "../etl/02_delta_spark_upsert.py" #voltando uma pasta e selecionando arquivo
+  source = "../etl/02_delta_spark_upset.py" #voltando uma pasta e selecionando arquivo
   etag   = filemd5("../etl/02_delta_spark_upset.py")
 
 }
