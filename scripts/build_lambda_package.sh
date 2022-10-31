@@ -34,7 +34,7 @@ echo "Acessando pasta pacote."
 cd $PACKAGE
 
 #declara variavel que localiza a funcao lambda para reutilizacao de codigo
-LAMBDA_FUNCTION=../etl/lambda_function.py
+LAMBDA_FUNCTION=../../etl/lambda_function.py
 
 #verifica se o arquivo lambda_function existe
 if [ -d $LAMBDA_FUNCTION]
