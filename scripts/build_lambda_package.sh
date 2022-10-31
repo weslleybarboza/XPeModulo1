@@ -30,6 +30,7 @@ then
     echo "=============================================="
 fi
 
+echo "Acessando pasta pacote."
 cd $PACKAGE
 
 #declara variavel que localiza a funcao lambda para reutilizacao de codigo
@@ -45,6 +46,8 @@ then
     zip -r9 ../lambda_function_payload.zip . #compacta o pacote para o deploy
     echo "Arquivo compactado com sucesso!"
     echo "=============================================="
+else
+echo "Arquivo lambda function nao encontrado."
 fi
 
 cd ..
