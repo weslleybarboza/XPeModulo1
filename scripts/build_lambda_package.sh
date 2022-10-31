@@ -21,7 +21,7 @@ fi
 FILE_REQUIREMENTS=../etl/lambda_requirements.txt
 
 #verifica se o arquivo lambda_requirements existe
-if [ -d $FILE_REQUIREMENTS]
+if [ -f $FILE_REQUIREMENTS]
 then
     echo "=============================================="
     echo "Instalando dependencias localizadas no "$FILE_REQUIREMENTS"..."
@@ -37,7 +37,7 @@ cd $PACKAGE
 LAMBDA_FUNCTION=../../etl/lambda_function.py
 
 #verifica se o arquivo lambda_function existe
-if [ -d $LAMBDA_FUNCTION]
+if [ -f $LAMBDA_FUNCTION]
 then
     echo "=============================================="
     echo "Copiando funcao Handler... "
