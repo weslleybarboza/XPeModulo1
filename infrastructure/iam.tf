@@ -58,13 +58,16 @@ resource "aws_iam_policy" "lambda" {
         },
         {
           "Action": "iam:PassRole",
-          "Resource": ["arn:aws:iam::127012818163:role/EMR_DefaultRole",
-                       "arn:aws:iam::127012818163:role/EMR_EC2_DefaultRole"],
+          "Resource": ["arn:aws:iam::${var.account_number}:role/EMR_DefaultRole",
+                       "arn:aws:iam::${var.account_number}:role/EMR_EC2_DefaultRole"],
           "Effect": "Allow"
         }
     ]
 }
 EOF
+  tags = {
+    cliente   = "weslley"
+  }
 }
 
 
