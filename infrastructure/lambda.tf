@@ -1,6 +1,6 @@
 resource "aws_lambda_function" "executa_emr" {
   #para subir cod na function precisamos colocar tudo em um zip e subir.
-  filename = "lambda_function_payload.zip"
+  filename      = "lambda_function_payload.zip"
   function_name = var.lambda_funcion_name
   #role sendo criado no iam.tf
   role = aws_iam_role.lambda.arn

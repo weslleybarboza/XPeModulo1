@@ -2,8 +2,8 @@
 
 #essa funcao tera a permissao de assumir uma role do servico lambda da AWS
 resource "aws_iam_role" "lambda" {
-  name = "WESLLEYLambdaRole"
-  assume_role_policy = <<EOF
+  name               = "WESLLEYLambdaRole"
+  assume_role_policy = <<EOT
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -17,7 +17,7 @@ resource "aws_iam_role" "lambda" {
         }
     ]
 }
-EOF
+EOT
 
   tags = {
     cliente = "weslley"
@@ -26,10 +26,10 @@ EOF
 }
 
 resource "aws_iam_policy" "lambda" {
-    name = "WESLLEYAWSLambdaBasicExecutionRolePolicy"
-    path = "/"
-    description = "Provides write permissions to CloudWatch Logs, S3 buckets and EMR Steps"
-    policy = <<EOF
+  name        = "WESLLEYAWSLambdaBasicExecutionRolePolicy"
+  path        = "/"
+  description = "Provides write permissions to CloudWatch Logs, S3 buckets and EMR Steps"
+  policy      = <<EOT
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -64,12 +64,12 @@ resource "aws_iam_policy" "lambda" {
         }        
     ]
 }
-EOF
+EOT
 }
 
 #vinculando uma policy a uma role
 resource "aws_iam_role_policy_attachment" "lambda_attach" {
-  role = aws_iam_role.lambda.name
+  role       = aws_iam_role.lambda.name
   policy_arn = aws_iam_policy.lambda.arn
 }
 #role: possui atributo name 
