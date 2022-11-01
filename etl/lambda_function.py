@@ -33,7 +33,7 @@ def handler(event, context):
                     'Ec2KeyName': 'datalake-weslley',
                     'KeepJobFlowAliveWhenNoSteps': True,
                     'TerminationProtected': False,
-                    'Ec2SubnetId': 'subnet-0164dc5dcabbfa098'
+                    'Ec2SubnetId': 'subnet-02c28755679c4792d'
                 },
 
                 Applications=[
