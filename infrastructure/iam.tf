@@ -20,7 +20,7 @@ resource "aws_iam_role" "lambda" {
 EOF
 
   tags = {
-    cliente   = "weslley"
+    cliente = "weslley"
   }
 
 }
@@ -29,7 +29,7 @@ resource "aws_iam_policy" "lambda" {
   name        = "WESLLEYAWSLambdaBasicExecutionRolePolicy"
   path        = "/"
   description = "Provides write permissions to CloudWatch Logs, S3 buckets and EMR Steps"
-  policy = <<EOF
+  policy      = <<EOF
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -66,7 +66,7 @@ resource "aws_iam_policy" "lambda" {
 }
 EOF
   tags = {
-    cliente   = "weslley"
+    cliente = "weslley"
   }
 }
 

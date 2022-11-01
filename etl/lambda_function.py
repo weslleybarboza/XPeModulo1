@@ -33,7 +33,7 @@ def handler(event, context):
                     'Ec2KeyName': 'datalake-weslley',
                     'KeepJobFlowAliveWhenNoSteps': True,
                     'TerminationProtected': False,
-                    'Ec2SubnetId': 'subnet-0164dc5dcabbfa098'
+                    'Ec2SubnetId': 'subnet-02c28755679c4792d'
                 },
 
                 Applications=[
@@ -83,7 +83,7 @@ def handler(event, context):
                 StepConcurrencyLevel=1,
                 
                 Steps=[{
-                    'Name': 'Delta Insert do ENEM',
+                    'Name': 'Teste de execucao EMR',
                     'ActionOnFailure': 'CONTINUE',
                     'HadoopJarStep': {
                         'Jar': 'command-runner.jar',
@@ -93,25 +93,41 @@ def handler(event, context):
                                  '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog', 
                                  '--master', 'yarn',
                                  '--deploy-mode', 'cluster',
-                                 's3://datalake-weslley-production-156814630337-tf/emr-code/pyspark/01_delta_spark_insert.py'
+                                 's3://datalake-weslley-production-156814630337-tf/emr-code/pyspark/job_spark_from_tr.py'
                                  ]
                     }
-                },
-                {
-                    'Name': 'Simulacao e UPSERT do ENEM',
-                    'ActionOnFailure': 'CONTINUE',
-                    'HadoopJarStep': {
-                        'Jar': 'command-runner.jar',
-                        'Args': ['spark-submit',
-                                 '--packages', 'io.delta:delta-core_2.12:1.0.0', 
-                                 '--conf', 'spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension', 
-                                 '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog', 
-                                 '--master', 'yarn',
-                                 '--deploy-mode', 'cluster',
-                                 's3://datalake-weslley-production-156814630337-tf/emr-code/pyspark/02_delta_spark_upset.py'
-                                 ]
-                    }
-                }],
+                }
+                # {
+                #     'Name': 'Delta Insert do ENEM',
+                #     'ActionOnFailure': 'CONTINUE',
+                #     'HadoopJarStep': {
+                #         'Jar': 'command-runner.jar',
+                #         'Args': ['spark-submit',
+                #                  '--packages', 'io.delta:delta-core_2.12:1.0.0', 
+                #                  '--conf', 'spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension', 
+                #                  '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog', 
+                #                  '--master', 'yarn',
+                #                  '--deploy-mode', 'cluster',
+                #                  's3://datalake-weslley-production-156814630337-tf/emr-code/pyspark/01_delta_spark_insert.py'
+                #                  ]
+                #     }
+                # },
+                # {
+                #     'Name': 'Simulacao e UPSERT do ENEM',
+                #     'ActionOnFailure': 'CONTINUE',
+                #     'HadoopJarStep': {
+                #         'Jar': 'command-runner.jar',
+                #         'Args': ['spark-submit',
+                #                  '--packages', 'io.delta:delta-core_2.12:1.0.0', 
+                #                  '--conf', 'spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension', 
+                #                  '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog', 
+                #                  '--master', 'yarn',
+                #                  '--deploy-mode', 'cluster',
+                #                  's3://datalake-weslley-production-156814630337-tf/emr-code/pyspark/02_delta_spark_upset.py'
+                #                  ]
+                #     }
+                # }
+                ]
             )
     
     return {
