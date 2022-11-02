@@ -4,7 +4,7 @@ resource "aws_glue_catalog_database" "stream" {
 
 resource "aws_glue_crawler" "stream" {
   database_name = aws_glue_catalog_database.stream.name
-  name          = "firehose_stream_s3_crawler"
+  name          = "${var.customer}-firehose_stream_s3_crawler"
   role          = aws_iam_role.glue_role.arn
 
   s3_target {
