@@ -13,7 +13,7 @@ resource "aws_s3_bucket" "datalake" {
   }
 
   tags = {
-    cliente = "weslley"
+    cliente = var.customer
   }
 }
 
@@ -31,6 +31,6 @@ resource "aws_s3_bucket" "stream" {
   }
 
   tags = {
-    cliente = "weslley"
+    cliente = var.customer
   }
 }

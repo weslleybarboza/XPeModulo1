@@ -1,5 +1,5 @@
 resource "aws_glue_catalog_database" "stream" {
-  name = "streamingdb"
+  name = "${var.customer}-streamingdb"
 }
 
 resource "aws_glue_crawler" "stream" {
@@ -20,6 +20,6 @@ resource "aws_glue_crawler" "stream" {
 EOF
 
   tags = {
-    cliente   = "weslley"
+    cliente = var.customer
   }
 }
