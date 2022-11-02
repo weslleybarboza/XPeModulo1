@@ -2,7 +2,7 @@
 
 #essa funcao tera a permissao de assumir uma role do servico lambda da AWS
 resource "aws_iam_role" "lambda" {
-  name               = "WESLLEYLambdaRole"
+  name               = "${var.customer}-LambdaRole"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -20,13 +20,13 @@ resource "aws_iam_role" "lambda" {
 EOF
 
   tags = {
-    cliente = "weslley"
+    cliente = var.customer
   }
 
 }
 
 resource "aws_iam_policy" "lambda" {
-  name        = "WESLLEYAWSLambdaBasicExecutionRolePolicy"
+  name        = "${var.customer}AWSLambdaBasicExecutionRolePolicy"
   path        = "/"
   description = "Provides write permissions to CloudWatch Logs, S3 buckets and EMR Steps"
   policy      = <<EOF
@@ -66,7 +66,7 @@ resource "aws_iam_policy" "lambda" {
 }
 EOF
   tags = {
-    cliente = "weslley"
+    cliente = var.customer
   }
 }
 
@@ -84,7 +84,7 @@ resource "aws_iam_role_policy_attachment" "lambda_attach" {
 #############
 
 resource "aws_iam_policy" "firehose" {
-  name        = "WeslleyFirehosePolicy"
+  name        = "${var.customer}FirehosePolicy"
   path        = "/"
   description = "Provides write permissions to CloudWatch Logs and S3"
 
@@ -134,7 +134,7 @@ resource "aws_iam_role_policy_attachment" "firehose_attach" {
 ###############
 
 resource "aws_iam_role" "glue_role" {
-  name = "IGTIGlueCrawlerRole"
+  name = "${var.customer}GlueCrawlerRole"
 
   assume_role_policy = <<EOF
 {
@@ -153,13 +153,13 @@ resource "aws_iam_role" "glue_role" {
 EOF
 
   tags = {
-    cliente = "weslley"
+    cliente = var.customer
   }
 
 }
 
 resource "aws_iam_policy" "glue_policy" {
-  name        = "WeslleyAWSGlueServiceRole"
+  name        = "${var.customer}AWSGlueServiceRole"
   path        = "/"
   description = "Policy for AWS Glue service role which allows access to related services including EC2, S3, and Cloudwatch Logs"
 

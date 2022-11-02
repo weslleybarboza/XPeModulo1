@@ -17,3 +17,7 @@ variable "region" {
 variable "lambda_funcion_name" {
   default = "WESLLEYexecutaEMR"
 }
+
+variable "customer" {
+  default = "weslley"
+}
