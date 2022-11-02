@@ -24,7 +24,7 @@ variable "customer" {
 
 #criado no EC2/Key pairs
 variable "key_pair_name" {
-  default = "datalake-weslley"
+  default = "weslley-datalake"
 }
 
 variable "airflow_subnet_id" {
