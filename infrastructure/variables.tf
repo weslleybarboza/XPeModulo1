@@ -28,9 +28,9 @@ variable "key_pair_name" {
 }
 
 variable "airflow_subnet_id" {
-  default = "subnet-0164dc5dcabbfa098"
+  default = "subnet-02c28755679c4792d"
 }
 
 variable "vpc_id" {
-  default = "subnet-0164dc5dcabbfa098"
+  default = "vpc-088067e91f4995420"
 }
