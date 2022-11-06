@@ -25,5 +25,5 @@ enem = (
     .mode("overwrite")
     .format("parquet")
     .partitionBy("year")
-    .save("s3://datalake-weslley-156814630337-tf/teste/staging/enem")
+    .save("s3://datalake-weslley-production-156814630337-tf/teste/staging/enem")
 )
