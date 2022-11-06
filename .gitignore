@@ -4,3 +4,5 @@
 *.tfstate
 *.hcl
 *.pem
+*.7z
+*.txt
