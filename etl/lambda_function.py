@@ -88,7 +88,6 @@ def handler(event, context):
                     'HadoopJarStep': {
                         'Jar': 'command-runner.jar',
                         'Args': ['spark-submit',
-                                 '--packages', 'io.delta:delta-core_2.12:1.0.0', 
                                  '--master', 'yarn',
                                  '--deploy-mode', 'cluster',
                                  's3://datalake-weslley-production-156814630337-tf/emr-code/pyspark/job_spark_from_tr.py'
